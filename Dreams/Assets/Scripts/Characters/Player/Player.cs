@@ -6,10 +6,14 @@ public class Player : MonoBehaviour, ICreateInstance
 
     public static Player s_Instance;
 
-    [SerializeField] CharacterController m_CharacterController;
-    public CharacterController GetPlayerCharacterController => m_CharacterController;
+    public List<Object> m_IStateObjList;
+    public List<IState> m_StatesList = new();
 
-    public List<IState> m_StatesList;
+    private void Start()
+    {
+        CallInit();
+        GenerateInstance();
+    }
 
     public void CallInit()
     {
@@ -18,6 +22,13 @@ public class Player : MonoBehaviour, ICreateInstance
 
     public void GenerateInstance()
     {
-        
+        foreach (var state in m_IStateObjList)
+        {
+            if (state is IState _State)
+            {
+                m_StatesList.Add(_State);
+                _State.IEnable();
+            }
+        }
     }
 }

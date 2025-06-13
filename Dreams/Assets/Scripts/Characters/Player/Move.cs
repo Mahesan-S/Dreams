@@ -7,7 +7,7 @@ public class Move : MonoBehaviour, IState
     [field: SerializeField] public InputActionReference inputState { get; set; }
     Vector2 m_MoveAcess;
     [SerializeField] float m_PlayerSpeed;
-    
+
     public void inti()
     {
 
