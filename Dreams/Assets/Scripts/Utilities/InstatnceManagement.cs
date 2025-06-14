@@ -19,16 +19,22 @@ public class InstatnceManagement : MonoBehaviour
             {
                 if (instance != null && instance is ICreateInstance _I)
                 {
-                    m_createInstances.Add(_I);
-                    _I.CallInit();
+
+                    string result = i switch
+                    {
+                        0 => m_createInstances.Add(_I), _I.CallInit();
+                };
                 }
+
+
             }
         }
     }
 
+
     int GetMethodLength(Type type)
     {
-        MethodInfo[] methods = type.GetMethods(BindingFlags.Public | 
+        MethodInfo[] methods = type.GetMethods(BindingFlags.Public |
                                                BindingFlags.Instance);
         return methods.Length;
     }
