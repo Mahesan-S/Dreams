@@ -11,26 +11,30 @@ public class InstatnceManagement : MonoBehaviour
 
     private void Awake()
     {
-        int _MethodCount = GetMethodLength(typeof(ICreateInstance));
+        CreateInstance(m_InstanceMonoBehavier);
+        float _MethodLength = GetMethodLength(typeof(ICreateInstance));
 
-        for (int i = 0; i < _MethodCount; i++)
+        for (int i = 0; i < _MethodLength; i++)
         {
-            foreach (var instance in m_InstanceMonoBehavier)
+            for (int j = 0; i < m_createInstances.Count; j++)
             {
-                if (instance != null && instance is ICreateInstance _I)
+                string result = i switch
                 {
-
-                    string result = i switch
-                    {
-                        0 => m_createInstances.Add(_I), _I.CallInit();
+                    //0 =>
                 };
-                }
-
-
             }
+
+        }
+
+    }
+    void CreateInstance(params object[] _Instance)
+    {
+        for (int i = 0; i < _Instance.Length; i++)
+        {
+            if (_Instance[i] is ICreateInstance _I)
+                m_createInstances.Add(_I);
         }
     }
-
 
     int GetMethodLength(Type type)
     {
