@@ -1,19 +1,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Player : MonoBehaviour, ICreateInstance
+public class PlayerManagement : MonoBehaviour, ICreateInstance
 {
 
-    public static Player s_Instance;
+    public static PlayerManagement s_Instance;
 
     public List<Object> m_IStateObjList;
     public List<IState> m_StatesList = new();
-
-    private void Start()
-    {
-        CallInit();
-        GenerateInstance();
-    }
 
     public void CallInit()
     {

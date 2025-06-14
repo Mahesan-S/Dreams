@@ -15,13 +15,13 @@ public class Move : MonoBehaviour, IState
     public void IEnable()
     {
         inputState.action.Enable();
-        inputState.action.started += MoveCharacter;
+        inputState.action.performed += MoveCharacter;
         inputState.action.canceled += MoveCharacter;
     }
     public void IDisable()
     {
         inputState.action.Disable();
-        inputState.action.started -= MoveCharacter;
+        inputState.action.performed -= MoveCharacter;
         inputState.action.canceled -= MoveCharacter;
     }
 
