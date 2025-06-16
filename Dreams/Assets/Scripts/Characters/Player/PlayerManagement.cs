@@ -9,20 +9,22 @@ public class PlayerManagement : MonoBehaviour, ICreateInstance
     public List<Object> m_IStateObjList;
     public List<IState> m_StatesList = new();
 
-    public void CallInit()
+    public void GenerateInstance()
     {
         s_Instance = this;
     }
 
-    public void GenerateInstance()
+    public void CallInit()
     {
         foreach (var state in m_IStateObjList)
         {
             if (state is IState _State)
             {
                 m_StatesList.Add(_State);
+                _State.inti();
                 _State.IEnable();
             }
         }
+       
     }
 }
